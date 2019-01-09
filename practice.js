@@ -28,7 +28,9 @@
 */
 
 // Code Here 
-
+ function first(array, callback){
+   callback(array[0])
+ }
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
@@ -48,7 +50,9 @@ first(names, function(firstName){
 */
 
 //Code Here
-
+function last(array,callback){
+  callback(array[array.length-1])
+}
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,7 +70,9 @@ last(names, function(lastName){
 */
 
 //Code Here
-
+function multiply(num1, num2, callback) {
+  callback( num1 * num2)
+}
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,7 +91,13 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
-
+function contains(array,name,callback){
+  if(array.includes(name)){
+    callback(true)
+  } else {
+    callback(false)
+  }
+}
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -106,7 +118,22 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
-
+function uniq(array,callback){
+  let unique = [...new Set(array)];
+  callback(unique)
+}
+var ldl = [33434]
+var dodf = [...ldl]
+///THIS DOESNT WORK
+// function uniq(array,callback){
+//   var newUniq = new Set(array);
+//   callback(newUniq)
+// }
+ ////        DOESNT WORK
+/////
+// var love = [1,3,4,1,3]
+// var love2 = new Set(love)
+// console.log(love2)
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,7 +150,11 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-
+function each(array, callback){
+  for(i=0;i<array.length;i++){
+     callback(array[i], array.indexOf(array[i]))
+  }
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -167,3 +198,13 @@ getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
 // Do not edit the code above.
+function getUserById (users, id, cb){
+  //console.log(users);
+
+  for(let i = 0; i < users.length; i++){
+    //console.log(users[i].id);
+    if(users[i].id === id){// this is to access inside of object
+      return cb(users[i]);
+    }
+  }
+}
